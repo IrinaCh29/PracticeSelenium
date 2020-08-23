@@ -69,11 +69,11 @@ public class LoginTest {
     assertTrue(driver.findElement(By.xpath("//*[@id='stalker']//child::a[@data-issue-key='WEBINAR-9060']")).isDisplayed());
   }
 
-//  @Test
-//  public void failedTest(){
-//    driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
-//    assertEquals(1, 2);
-//  }
+  @Test
+  public void failedTest(){
+    driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
+    assertEquals(1, 2);
+  }
 
   @Test
   public void unsuccessfulLoginTest() {

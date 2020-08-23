@@ -28,16 +28,15 @@ public class TestNGListener implements ITestListener {
   @Override
   public void onTestFailure(ITestResult result) {
     File screenshotsFolder = new File(System.getProperty("user.dir") + "/screenshots");
-
     if (!screenshotsFolder.exists()) {
       screenshotsFolder.mkdir();
     }
-
     File screenshot = captureScreenshot();
-    Path pathToScreenShot = Paths.get(screenshot.getPath());
+    Path pathToScreenshot = Paths.get(screenshot.getPath());
     try {
-      String screenshotName = screenshotsFolder + "/" + "Screenshot_" + java.time.LocalTime.now() + ".png";
-      Files.copy(pathToScreenShot, Paths.get(screenshotName), StandardCopyOption.COPY_ATTRIBUTES);
+      String localTime = java.time.LocalTime.now().toString().replace(":", ".");
+      String screenshotName = screenshotsFolder + "/" + "Screenshot_" + localTime + ".png";
+      Files.copy(pathToScreenshot, Paths.get(screenshotName), StandardCopyOption.COPY_ATTRIBUTES);
     } catch (IOException e) {
       e.printStackTrace();
     }
