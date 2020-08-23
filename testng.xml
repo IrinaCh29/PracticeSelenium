@@ -9,4 +9,8 @@
             <class name="LoginTest"/>
         </classes>
     </test>
+    
+    <listeners>
+        <listener class-name="utils.TestNGListener"></listener>
+    </listeners>
 </suite>

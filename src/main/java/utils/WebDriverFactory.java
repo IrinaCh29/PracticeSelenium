@@ -1,3 +1,5 @@
+package utils;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -27,11 +29,7 @@ public class WebDriverFactory {
     WebDriver driver = null;
 
     if (browserName.toLowerCase().contains("firefox")) {
-      /*GeckoDriver физически подтягивается (сохраняли/клали ранее в папку и ссылались),
-      то есть подтягивается сейчас автоматически
-      WebDriver - подключенная библиотека  */
-      WebDriverManager.firefoxdriver().setup(); // Аналог - System.setProperty("webdriver.chrome.driver","D:\List_of_Jar\chromedriver.exe"); и руками не кладем фафлик в папку
-      // создаем конкретный webDriver - что является = Подключись к браузеру к такому-то
+      WebDriverManager.firefoxdriver().setup();
       driver = new FirefoxDriver();
     } else if (browserName.toLowerCase().contains("internet")) {
       WebDriverManager.iedriver().setup();

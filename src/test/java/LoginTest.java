@@ -7,10 +7,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import utils.WebDriverFactory;
 
 import java.time.Duration;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
 import static org.testng.Assert.*;
 
@@ -26,8 +26,8 @@ public class LoginTest {
   @Test
   public void successfulLoginTest() {
     driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
-    driver.findElement(By.id("login-form-username")).sendKeys("webinar5");
-    driver.findElement(By.id("login-form-password")).sendKeys("webinar5");
+    driver.findElement(By.id("login-form-username")).sendKeys("IrinaChub");
+    driver.findElement(By.id("login-form-password")).sendKeys("IrinaChub");
     driver.findElement(By.id("login")).click();
 
     try {
@@ -69,6 +69,12 @@ public class LoginTest {
     assertTrue(driver.findElement(By.xpath("//*[@id='stalker']//child::a[@data-issue-key='WEBINAR-9060']")).isDisplayed());
   }
 
+//  @Test
+//  public void failedTest(){
+//    driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
+//    assertEquals(1, 2);
+//  }
+
   @Test
   public void unsuccessfulLoginTest() {
 
@@ -81,7 +87,6 @@ public class LoginTest {
     driver.findElement(By.id("login-form-password")).sendKeys("IrinaChub");
     driver.findElement(By.id("login")).click();
 
-    //Explicit Wait for element to appear
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30).getSeconds());
     boolean elementIsPresent = wait.until(presenceOfElementLocated(By.id("create_link"))).isEnabled();
     assertEquals(elementIsPresent, true);
@@ -126,17 +131,11 @@ public class LoginTest {
 
     driver.findElement(By.id("create-issue-submit")).click();
 
-    //Explicit Wait for element to appear
     boolean popUpIsPresent = wait.until(presenceOfElementLocated(By.className("aui-message-success"))).isDisplayed();
     assertEquals(popUpIsPresent, true);
 
-//    //Explicit Wait to verify that Ticket Name consists of the element=Webinar
-//    boolean ticketNameIsPresent = wait.until(presenceOfElementLocated(By.xpath("//*[@class='aui-message-success']//child::span[contains(text(),'WEBINAR')]"))).isDisplayed();
-//    assertEquals(ticketNameIsPresent, true);
-// //      driver.findElement(By.xpath("//*[@class='aui-message-success']//child::span[contains(text(),'WEBINAR')]")).click();
     WebElement projectNameIsPresent = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("aui-message-success")));
     wait.until(ExpectedConditions.textToBePresentInElement(projectNameIsPresent, "WEBINAR"));
-
   }
 
   @Test
@@ -153,7 +152,6 @@ public class LoginTest {
     }
     assertTrue(driver.findElement(By.id("header-details-user-fullname")).isDisplayed());
 
-    //Explicit Wait for element to appear
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30).getSeconds());
     boolean elementIsPresent = wait.until(presenceOfElementLocated(By.id("quickSearchInput"))).isEnabled();
     assertEquals(elementIsPresent, true);
