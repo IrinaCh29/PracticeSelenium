@@ -14,9 +14,11 @@ import utils.WebDriverFactory;
 import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.presenceOfElementLocated;
-import static org.testng.Assert.*;
+import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
-public class LoginTest {
+public class CreateIssueTest {
+
   WebDriver driver = null;
   LoginPage loginPage = null;
   HomePage homePage = null;
@@ -27,63 +29,6 @@ public class LoginTest {
     driver = WebDriverFactory.getDriver();
     loginPage = new LoginPage(driver);
     homePage = new HomePage(driver);
-  }
-
-  @Test
-  public void successfulLoginTest() {
-    loginPage.navigateTo();
-    loginPage.enterUserName("IrinaChub");
-    loginPage.enterPassword("IrinaChub");
-    loginPage.clickLogin();
-
-    try {
-      Thread.sleep(3000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-    assertTrue(homePage.userIconIsPresent());
-
-    try {
-      Thread.sleep(5000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-
-    driver.findElement(By.id("quickSearchInput")).sendKeys("WEBINAR-9060");
-    try {
-      Thread.sleep(3000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-
-    driver.findElement(By.xpath("//*[@id='quicksearch-menu']//child::span[contains(text(),'WEBINAR-9060')]")).click();
-
-    try {
-      Thread.sleep(3000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-
-    assertTrue(driver.findElement(By.xpath("//*[contains(text(),'Type:')]//following::*[@id='type-val']")).isDisplayed());
-
-    try {
-      Thread.sleep(3000);//5
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-
-    assertTrue(driver.findElement(By.xpath("//*[@id='stalker']//child::a[@data-issue-key='WEBINAR-9060']")).isDisplayed());
-  }
-
-  @Test
-  public void failedTest() {
-    driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
-    assertEquals(1, 2);
-  }
-
-  @Test
-  public void unsuccessfulLoginTest() {
-
   }
 
   @Test
@@ -194,6 +139,7 @@ public class LoginTest {
     WebElement deletedCommentTest = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(("//*[@id='issue_actions_container']//child::*[contains(text(), 'There are no comments yet on this issue.')]"))));
     wait.until(ExpectedConditions.textToBePresentInElement(deletedCommentTest, "There are no comments yet on this issue."));
   }
+
 
   @AfterMethod
   public void tearDown() {
