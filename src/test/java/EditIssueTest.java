@@ -40,10 +40,9 @@ public class EditIssueTest {
     assertTrue(issuePage.isIssueTypeOnDetailsSectionPresent());
 
     assertTrue(issuePage.isTaskIssueLinkOnHeaderPresent());
-
     assertTrue(issuePage.isCommentTabOnIssueEnable());
     issuePage.isCommentTabOnIssueClickable();
-    issuePage.isCommentButtonOnIssueEnable();
+    assertTrue(issuePage.isCommentButtonOnIssueEnable());
     issuePage.isCommentButtonOnIssueClickable();
     issuePage.inputTextInCommentTextArea("some comments");
     issuePage.isAddedCommentOnIssueIsSavedByButtonClickable();

@@ -15,7 +15,6 @@ public class HomePage {
   private By searchBugIssueByName = By.xpath("//*[@id='quicksearch-menu']//child::span[contains(text(),'WEBINAR-9060')]");
   private By searchTaskIssueByName = By.xpath("//*[@id='quicksearch-menu']//child::span[contains(text(),'WEBINAR-12467')]");
 
-
   private By createButtonOnHeader = By.id("create_link");
 
   public HomePage(WebDriver driver) {

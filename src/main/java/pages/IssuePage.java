@@ -73,6 +73,7 @@ public class IssuePage {
     WebElement addCommentTest = wait.until(ExpectedConditions.visibilityOfElementLocated(addedCommentTextOnIssue));
     return wait.until(ExpectedConditions.textToBePresentInElement(addCommentTest, "some comments"));
   }
+
   public void isDeletedButtonOfCommentOnIssueClickable() {
     driver.findElement(deletedButtonOfCommentOnIssue).click();
   }
@@ -88,7 +89,6 @@ public class IssuePage {
 
   public boolean isDeletedCommentOnIssueNotPresent() {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30).getSeconds());
-
     WebElement deletedCommentTest = wait.until(ExpectedConditions.visibilityOfElementLocated(deletedCommentOnIssue));
     return wait.until(ExpectedConditions.textToBePresentInElement(deletedCommentTest, "There are no comments yet on this issue."));
   }

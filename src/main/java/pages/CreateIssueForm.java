@@ -22,7 +22,6 @@ public class CreateIssueForm {
   private By issueSubmitButton = By.id("create-issue-submit");
   private By successPopUpMessage = By.className("aui-message-success");
 
-
   public CreateIssueForm(WebDriver driver) {
     this.driver = driver;
   }
@@ -111,5 +110,4 @@ public class CreateIssueForm {
     WebElement projectNameIsPresent = wait.until(ExpectedConditions.visibilityOfElementLocated(successPopUpMessage));
     return wait.until(ExpectedConditions.textToBePresentInElement(projectNameIsPresent, "WEBINAR"));
   }
-
 }
