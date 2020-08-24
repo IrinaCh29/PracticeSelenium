@@ -9,7 +9,7 @@ import utils.WebDriverFactory;
 
 import static org.testng.Assert.assertTrue;
 
-public class EditIssueTest {
+public class ViewIssueTest {
   WebDriver driver = null;
   LoginPage loginPage = null;
   HomePage homePage = null;
@@ -25,7 +25,7 @@ public class EditIssueTest {
   }
 
   @Test
-  public void commentToIssue() {
+  public void viewIssue() {
     loginPage.navigateTo();
     loginPage.enterUserName("IrinaChub");
     loginPage.enterPassword("IrinaChub");
@@ -33,26 +33,12 @@ public class EditIssueTest {
 
     assertTrue(homePage.isUserIconOnHeaderPresent());
 
-    assertTrue(homePage.isQuickSearchInputFieldEnable());
-    homePage.inputNameToSearchFieldOnHeader("WEBINAR-12467");
-    homePage.isFoundTaskIssueByNameClickable();
+    homePage.inputNameToSearchFieldOnHeader("WEBINAR-9060");
+    homePage.isFoundBugIssueByNameClickable();
 
     assertTrue(issuePage.isIssueTypeOnDetailsSectionPresent());
 
-    assertTrue(issuePage.isTaskIssueLinkOnHeaderPresent());
-
-    assertTrue(issuePage.isCommentTabOnIssueEnable());
-    issuePage.isCommentTabOnIssueClickable();
-    issuePage.isCommentButtonOnIssueEnable();
-    issuePage.isCommentButtonOnIssueClickable();
-    issuePage.inputTextInCommentTextArea("some comments");
-    issuePage.isAddedCommentOnIssueIsSavedByButtonClickable();
-    assertTrue(issuePage.isAddedCommentOnIssuePresent());
-
-    issuePage.isDeletedButtonOfCommentOnIssueClickable();
-    assertTrue(issuePage.isDeleteDialogOnIssuePresent());
-    issuePage.isDeletedButtonOnDeleteCommentDialogClickable();
-    assertTrue(issuePage.isDeletedCommentOnIssueNotPresent());
+    assertTrue(issuePage.isBugIssueLinkOnHeaderPresent());
   }
 
   @AfterMethod

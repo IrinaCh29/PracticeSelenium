@@ -14,6 +14,10 @@ public class LoginPage {
     this.driver = driver;
   }
 
+  public void navigateTo(){
+    driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
+  }
+
   public void enterUserName(String name){
     driver.findElement(userNameInput).sendKeys(name);
   }
@@ -24,9 +28,5 @@ public class LoginPage {
 
   public void clickLogin(){
     driver.findElement(loginButton).click();
-  }
-
-  public void navigateTo(){
-    driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
   }
 }
