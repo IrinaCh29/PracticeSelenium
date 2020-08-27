@@ -20,6 +20,7 @@ public class TestNGListener implements ITestListener {
   public void onTestStart(ITestResult result) {
     String browserName = result.getTestContext().getCurrentXmlTest().getParameter("browserName");
     System.out.println("Browser Name is: " + browserName);
+    WebDriverFactory.createInstance(browserName);
   }
 
   @Override
