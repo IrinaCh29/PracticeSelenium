@@ -34,11 +34,12 @@ public class CreateIssueTest {
     loginPage.clickLogin();
 
     assertTrue(homePage.isCreateButtonOnHeaderPresent());
-    try {
-      Thread.sleep(3000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+
+//    try {
+//      Thread.sleep(3000);
+//    } catch (InterruptedException e) {
+//      e.printStackTrace();
+//    }
     homePage.isCreateButtonOnHeaderClickable();
 
     assertTrue(createIssueForm.isProjectNameFieldPresent());
