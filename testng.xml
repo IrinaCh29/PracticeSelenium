@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="Sample Test Suite" parallel="false">
-    <test name="Sample Test">
-
-        <parameter name="browserName" value="chrome"/>
-
+    <test name="Login Test">
+        <parameter name="waitTimeOutInSeconds" value="10"></parameter>
+        <parameter name="browserName" value="Chrome"/>
         <classes>
             <class name="LoginTest"/>
+            <class name="CreateIssueTest"/>
+            <class name="EditIssueTest"/>
+            <class name="ViewIssueTest"/>
+            <class name="TestWithParameters">
+                <methods>
+                    <include name="testWithParametersInListener"/>
+                </methods>
+            </class>
         </classes>
     </test>
-    
     <listeners>
         <listener class-name="utils.TestNGListener"></listener>
     </listeners>
