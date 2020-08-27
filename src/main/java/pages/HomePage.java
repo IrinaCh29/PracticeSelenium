@@ -16,7 +16,7 @@ public class HomePage {
   private By quickSearchInputField = By.id("quickSearchInput");
   private By searchBugIssueByName = By.xpath("//*[@id='quicksearch-menu']//child::span[contains(text(),'WEBINAR-9060')]");
   private By searchTaskIssueByName = By.xpath("//*[@id='quicksearch-menu']//child::span[contains(text(),'WEBINAR-12467')]");
-  private By createIssueTitle = By.xpath("//h2[@title='Create Issue']");
+  private By createIssueDialogOpenedAsCreateIssueForm = By.id("create-issue-dialog"); //locator for CreateIssueForm
 
   private By createButtonOnHeader = By.id("create_link");
 
@@ -49,25 +49,12 @@ public class HomePage {
   }
 
   public void isCreateButtonOnHeaderClickable() {
-    clickOnElementWithRetry(createButtonOnHeader, createIssueTitle, 3, 3 );
-//    WebDriverWait wait = new WebDriverWait(driver, 3);
-//
-//    driver.findElement(createButtonOnHeader).click();
-//    for (int i = 0; i < 3; i++) {
-//      try{
-//        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//h2[@title='Create Issue']")));
-//        break;
-//      } catch (TimeoutException e){
-//        wait.until(ExpectedConditions.elementToBeClickable(createButtonOnHeader));
-//        driver.findElement(createButtonOnHeader).click();
-//      }
-//    }
+    clickOnElementWithRetry(createButtonOnHeader, createIssueDialogOpenedAsCreateIssueForm, 3, 3 );
   }
 
   private void clickOnElementWithRetry(By elementToBeClicked, By successCriteriaElement, int attempts, int timeOutInSeconds) {
     WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
     for (int i = 0; i < attempts; i++) {
-     // driver.findElement(elementToBeClicked).click();
       try {
         wait.until(ExpectedConditions.visibilityOfElementLocated(successCriteriaElement)).isDisplayed();
         break;

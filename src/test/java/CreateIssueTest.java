@@ -35,11 +35,6 @@ public class CreateIssueTest {
 
     assertTrue(homePage.isCreateButtonOnHeaderPresent());
 
-//    try {
-//      Thread.sleep(3000);
-//    } catch (InterruptedException e) {
-//      e.printStackTrace();
-//    }
     homePage.isCreateButtonOnHeaderClickable();
 
     assertTrue(createIssueForm.isProjectNameFieldPresent());
@@ -48,21 +43,11 @@ public class CreateIssueTest {
     createIssueForm.pressTabOnProjectName();
 
     assertTrue(createIssueForm.isIssueTypeFieldPresent());
-    try {
-      Thread.sleep(3000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
     createIssueForm.clearIssueTypeField();
     createIssueForm.enterIssueName("Task");
     createIssueForm.pressTabOnIssueName();
 
     assertTrue(createIssueForm.isSummaryFieldPresent());
-    try {
-      Thread.sleep(3000);
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
     createIssueForm.enterSummary("summary");
 
     assertTrue(createIssueForm.isReporterFieldPresent());

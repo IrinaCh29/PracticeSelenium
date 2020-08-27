@@ -32,11 +32,11 @@ public class LoginTest {
     assertTrue(homePage.isUserIconOnHeaderPresent());
   }
 
-  @Test
-  public void failedTest() {
-    loginPage.navigateTo();
-    assertEquals(1, 2);
-  }
+//  @Test
+//  public void failedTest() {
+//    loginPage.navigateTo();
+//    assertEquals(1, 2);
+//  }
 
   @Test
   public void unsuccessfulLogin() {
