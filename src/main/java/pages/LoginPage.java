@@ -2,6 +2,8 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoginPage {
 
@@ -14,19 +16,24 @@ public class LoginPage {
     this.driver = driver;
   }
 
-  public void navigateTo(){
+  public void navigateTo() {
     driver.get("https://jira.hillel.it/secure/Dashboard.jspa");
   }
 
-  public void enterUserName(String name){
+  public void enterUserName(String name) {
     driver.findElement(userNameInput).sendKeys(name);
   }
 
-  public void enterPassword(String password){
+  public void enterPassword(String password) {
     driver.findElement(passwordInput).sendKeys(password);
   }
 
-  public void clickLogin(){
+  public void clickLogin() {
     driver.findElement(loginButton).click();
+  }
+
+  public boolean isErrorMessagePresent(String message) {
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    return wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[contains(text(),\'" + message + "\')]"))).isDisplayed();
   }
 }
