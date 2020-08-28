@@ -25,7 +25,7 @@ public class TestNGListener implements ITestListener {
 
   @Override
   public void onTestSuccess(ITestResult result) {
-
+    System.out.println("OnTestSuccess Method from TestNGListener is working at the moment");
   }
 
   @Override
@@ -48,22 +48,25 @@ public class TestNGListener implements ITestListener {
 
   @Override
   public void onTestSkipped(ITestResult result) {
-
+    System.out.println("onTestSkipped Method from TestNGListener is working at the moment");
   }
 
   @Override
   public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-
+    System.out.println("onTestFailedButWithinSuccessPercentage Method from TestNGListener is working at the moment");
   }
 
   @Override
   // запускается 1 раз перед тестом
   public void onStart(ITestContext context) {
-
+    String browserName = context.getCurrentXmlTest().getParameter("browserName");
+    System.out.println("Listener. Browser name is " + browserName);
+    WebDriverFactory.createInstance(browserName);
   }
 
   @Override
   public void onFinish(ITestContext context) {
+    System.out.println("onFinish Method from TestNGListener is working at the moment");
     WebDriverFactory.getDriver().quit();
   }
 

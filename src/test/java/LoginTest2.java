@@ -10,7 +10,7 @@ import utils.WebDriverFactory;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
-public class LoginTest {
+public class LoginTest2 {
   WebDriver driver = null;
   LoginPage loginPage = null;
   HomePage homePage = null;
@@ -36,13 +36,13 @@ public class LoginTest {
   @Test
   public void successfulLogin() {
     loginPage.navigateTo();
-    loginPage.enterUserName("IrinaChub");
+    loginPage.enterUserName("webinar5");
     try {
       Thread.sleep(20000);
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
-    loginPage.enterPassword("IrinaChub");
+    loginPage.enterPassword("webinar5");
     loginPage.clickLogin();
 
     assertTrue(homePage.isUserIconOnHeaderPresent());
