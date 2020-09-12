@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--    <suite name="Sample Test Suite" parallel="false">-->
 <suite name="Sample Test Suite" parallel="classes" thread-count="2">
     <test name="Login Test">
         <parameter name="waitTimeOutInSeconds" value="10"></parameter>
         <parameter name="browserName" value="Chrome"/>
         <classes>
-            <class name="Empty1Test"/>
-            <class name="Empty2Test"/>
-<!--            <class name="LoginTest"/>-->
-<!--            <class name="LoginTest2"/>-->
-<!--            <class name="CreateIssueTest"/>-->
+<!--            <class name="Empty1Test"/>-->
+<!--            <class name="Empty2Test"/>-->
+            <class name="LoginTest"/>
+            <class name="LoginTest2"/>
+            <class name="CreateIssueTest"/>
 <!--            <class name="EditIssueTest"/>-->
 <!--            <class name="ViewIssueTest"/>-->
 <!--            <class name="TestWithParameters">-->
