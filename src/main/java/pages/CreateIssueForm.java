@@ -1,9 +1,6 @@
 package pages;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -44,10 +41,12 @@ public class CreateIssueForm {
   }
 
   public boolean isIssueTypeFieldPresent() {
-    return driver.findElement(issueTypeField).isDisplayed();
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    return wait.until(ExpectedConditions.elementToBeClickable(issueTypeField)).isDisplayed();
   }
 
   public void clearIssueTypeField() {
+    isIssueTypeFieldPresent();
     driver.findElement(issueTypeField).clear();
   }
 
@@ -60,10 +59,12 @@ public class CreateIssueForm {
   }
 
   public boolean isSummaryFieldPresent() {
-    return driver.findElement(summaryField).isDisplayed();
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    return wait.until(ExpectedConditions.elementToBeClickable(summaryField)).isDisplayed();
   }
 
   public void enterSummary(String summaryText) {
+    isSummaryFieldPresent();
     driver.findElement(summaryField).sendKeys(summaryText);
   }
 
@@ -109,5 +110,18 @@ public class CreateIssueForm {
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(2).getSeconds());
     WebElement projectNameIsPresent = wait.until(ExpectedConditions.visibilityOfElementLocated(successPopUpMessage));
     return wait.until(ExpectedConditions.textToBePresentInElement(projectNameIsPresent, "WEBINAR"));
+  }
+
+  private void clickOnElementWithRetry(By elementToBeClicked, By successCriteriaElement, int attempts, int timeOutInSeconds) {
+    WebDriverWait wait = new WebDriverWait(driver, timeOutInSeconds);
+    for (int i = 0; i < attempts; i++) {
+      try {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(successCriteriaElement)).isDisplayed();
+        break;
+      } catch (TimeoutException e) {
+        wait.until(ExpectedConditions.elementToBeClickable(elementToBeClicked));
+        driver.findElement(elementToBeClicked).click();
+      }
+    }
   }
 }
