@@ -9,19 +9,19 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class WebDriverFactory {
 
-  private static WebDriver webDriver;
+  private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
 
   public static WebDriver getDriver() {
-    return webDriver;
+    return webDriver.get();
   }
 
-  public static void setWebDriver(WebDriver driver){
-    webDriver = driver;
-  }
-
-  public static void closeDriver(){
-    webDriver.quit();
-  }
+  //  public static void setWebDriver(WebDriver driver){
+//    webDriver = driver;
+//  }
+//
+//  public static void closeDriver() {
+//     webDriver.quit();
+//  }
 
   public static void createInstance(String browserName) {
 
@@ -43,6 +43,6 @@ public class WebDriverFactory {
     }
 
     driver.manage().window().maximize();
-    webDriver = driver;
+    webDriver.set(driver);
   }
 }

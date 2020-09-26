@@ -18,6 +18,9 @@ public class CreateIssueForm {
   private By descriptionTextArea = By.id("description");
   private By issueSubmitButton = By.id("create-issue-submit");
   private By successPopUpMessage = By.className("aui-message-success");
+  private By cancelButton = By.xpath("//a[@class='cancel']");
+  private By createIssueForm = By.id("create-issue-dialog");
+
 
   public CreateIssueForm(WebDriver driver) {
     this.driver = driver;
@@ -123,5 +126,28 @@ public class CreateIssueForm {
         driver.findElement(elementToBeClicked).click();
       }
     }
+  }
+
+  public void clickCancelButton() {
+    WebDriverWait wait = new WebDriverWait(driver, 10);
+    wait.until(ExpectedConditions.elementToBeClickable(cancelButton)).click();
+  }
+
+  public void dismissAlert() {
+    driver.switchTo().alert().dismiss();
+  }
+
+  public void acceptAlert() {
+    driver.switchTo().alert().accept();
+  }
+
+  public boolean createIssueFormIsNotDisappeared() {
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+    return wait.until(ExpectedConditions.presenceOfElementLocated(createIssueForm)).isDisplayed();
+  }
+
+  public boolean createIssueFormIsDisappeared() {
+    WebDriverWait wait = new WebDriverWait(driver, 3);
+    return wait.until(ExpectedConditions.invisibilityOfElementLocated(createIssueForm));
   }
 }
