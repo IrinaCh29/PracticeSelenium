@@ -15,18 +15,18 @@ public class WebDriverFactory {
     return webDriver.get();
   }
 
-  //  public static void setWebDriver(WebDriver driver){
+//    public static void setWebDriver(WebDriver driver){
 //    webDriver = driver;
 //  }
-//
+
 //  public static void closeDriver() {
-//     webDriver.quit();
+//     webDriver.get().quit();
 //  }
 
   public static void createInstance(String browserName) {
 
     DesiredCapabilities capability = null;
-    WebDriver driver = null;
+    WebDriver driver;
 
     if (browserName.toLowerCase().contains("firefox")) {
       WebDriverManager.firefoxdriver().setup();
@@ -35,7 +35,6 @@ public class WebDriverFactory {
       WebDriverManager.iedriver().setup();
       driver = new InternetExplorerDriver();
     } else if (browserName.toLowerCase().contains("chrome")) {
-      // WebDriverManager.chromedriver().version("84.0.4147.30").setup();
       WebDriverManager.chromedriver().setup();
       driver = new ChromeDriver();
     } else {
